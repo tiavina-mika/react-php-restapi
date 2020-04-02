@@ -4,32 +4,19 @@ header('Access-Control-Allow-Headers: Content-Type');
 $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);
 
-// if (empty($_POST['name']) && empty($_POST['email'])) die();
-
-if ($_POST)
-	{
-
+if ($_POST) {
 		// set response code - 200 OK
-
 		http_response_code(200);
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		if (!$name || !$email) {
-			// var_dump($name);
 			echo json_encode(["sent" => false, "error" => "Fields required"]);
 			return;
 		}
-
-			echo json_encode(["sent" => true, "name" => $name]);
-			// echo json_encode(array(["sent" => true, "name" => $name]));
-		// echo json_encode(array("sent" => true));
+		echo json_encode(["sent" => true, "name" => $name]);
 	}
-  else
-	{
-
-	// tell the user about error
-
+else {
 	echo json_encode(["sent" => false, "error" => "Something went wrong"]);
-	}
+}
 
 ?>
