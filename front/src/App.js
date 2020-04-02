@@ -73,7 +73,7 @@ const handleFormSubmit = async e => {
             headers: { 'content-type': 'application/json' },
             data: { name, email }
         })
-        console.log('result: ', result.data);
+        console.log('result:  ', result.data);
 
         if (result && !result.data.sent) setError(result.data.error);
 
